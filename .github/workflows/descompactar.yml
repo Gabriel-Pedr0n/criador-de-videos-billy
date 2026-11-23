@@ -18,4 +18,10 @@ jobs:
           rm -rf "$SRC/.git" "$SRC/.github"
           cp -a "$SRC"/. .
           rm billy-constroi-OFC.7z
-      - name:
+      - name: Salvar
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Descompactar pacote"
+          git push
