@@ -10,12 +10,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Descompactar
         run: |
-          unzip -o pacote.zip
-          rm pacote.zip
-      - name: Salvar
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@users.noreply.github.com"
-          git add -A
-          git commit -m "Descompactar pacote"
-          git push
+          sudo apt-get install -y p7zip-full
+          mkdir -p /tmp/x
+          7z x billy-constroi-OFC.7z -o/tmp/x -y
+          SRC=/tmp/x
+          if [ "$(ls -A $SRC | wc -l)" -eq 1 ] && [ -d "$SRC/$(ls -A $SRC)" ]; then SRC="$SRC/$(ls -A $SRC)"; fi
+          rm -rf "$SRC/.git" "$SRC/.github"
+          cp -a "$SRC"/. .
+          rm billy-constroi-OFC.7z
+      - name:
