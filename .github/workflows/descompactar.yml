@@ -1,0 +1,21 @@
+name: Descompactar pacote
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descompactar
+        run: |
+          unzip -o pacote.zip
+          rm pacote.zip
+      - name: Salvar
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Descompactar pacote"
+          git push
