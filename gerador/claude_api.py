@@ -6,8 +6,8 @@ import base64, json, os, re, sys, time
 
 import anthropic
 
-MODELO_PADRAO = os.environ.get("MODELO_CLAUDE", "claude-sonnet-5-5")
-MODELO_FORTE = os.environ.get("MODELO_CLAUDE_FORTE", "claude-opus-5-5")
+MODELO_PADRAO = os.environ.get("MODELO_CLAUDE") or "claude-sonnet-5-5"
+MODELO_FORTE = os.environ.get("MODELO_CLAUDE_FORTE") or "claude-opus-5-5"
 FERRAMENTA_BUSCA = {"type": "web_search_20250305", "name": "web_search", "max_uses": 6}
 
 
