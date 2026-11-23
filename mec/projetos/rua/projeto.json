@@ -1,0 +1,57 @@
+{
+ "slug": "rua",
+ "titulo": "Você asfalta uma rua",
+ "voz": "Will – Deep Smooth and Affectionate (ElevenLabs v4)",
+ "limite_s": 100.0,
+ "velocidade": 1.15,
+ "blocos": [
+  {
+   "id": 1,
+   "nome": "Gancho + subleito",
+   "texto": "Se você jogar asfalto direto em cima da terra, você não vai ter uma rua. Vai ter uma fábrica de buracos. Porque a terra fofa afunda com o peso dos carros, e o asfalto quebra junto, como casca de ovo. Então você raspa a terra solta e passa um rolo pesado até o chão ficar duro. Esse é o subleito.",
+   "termos": [
+    "subleito"
+   ],
+   "cenas": "mascote joga asfalto na terra; carro passa, asfalto racha e abre buraco (X); rebobina; raspa a terra, rolo compacta"
+  },
+  {
+   "id": 2,
+   "nome": "Base de pedra",
+   "texto": "Mas quando chove, até terra dura amolece, e as rodas de um caminhão afundam nela. Então você cobre tudo com uma camada grossa de pedra britada, bem socada, que espalha o peso como uma tábua em cima da lama. Essa é a base. É por isso que o buraco sempre volta no mesmo lugar: o remendo tapa o asfalto, mas a base continua mole.",
+   "termos": [
+    "base"
+   ],
+   "cenas": "chuva, corte do chão: terra amolece, seta de peso do caminhão num ponto; camada de brita, setas espalhando; remendo que afunda de novo",
+   "texto_antigo": "Mas quando chove, até terra dura amolece, e o peso de um caminhão desce num ponto só. Então você cobre tudo com uma camada grossa de pedra britada, bem socada, que espalha o peso como uma tábua em cima da lama. Essa é a base. É por isso que o buraco sempre volta no mesmo lugar: o remendo tapa o asfalto, mas a base continua mole."
+  },
+  {
+   "id": 3,
+   "nome": "Imprimação + asfalto quente",
+   "texto": "Mas asfalto não gruda em pedra solta e cheia de pó. Então você rega a base com um asfalto ralo, quase líquido, que entra entre as pedras e cola tudo. Essa é a imprimação. Mas a capa só se molda quente. Então você mistura pedra com asfalto derretido, espalha a mais de cem graus e aperta com o rolo antes de esfriar. Esse é o concreto asfáltico.",
+   "termos": [
+    "imprimação",
+    "concreto asfáltico"
+   ],
+   "cenas": "placa de asfalto solta e escorrega; caminhão espargidor rega a base de preto; massa quente fumegando, medida de temperatura, rolo"
+  },
+  {
+   "id": 4,
+   "nome": "Água: abaulamento, sarjeta e boca de lobo",
+   "texto": "Mas água parada entra em qualquer trinca e apodrece a rua por baixo. Então você faz o meio mais alto que as beiradas, pra chuva escorrer pros lados. Esse é o abaulamento. E na beira, uma canaleta de concreto leva a água até uma abertura que engole a enxurrada. Essa é a sarjeta e essa é a boca de lobo. É por isso que, quando ela entope de lixo, a rua alaga.",
+   "termos": [
+    "abaulamento",
+    "sarjeta",
+    "boca de lobo"
+   ],
+   "cenas": "poça na rua plana, bolinhas azuis entrando na trinca; rua abaulada em corte, água corre; sarjeta e boca de lobo engolindo; boca entupida e rua alagada"
+  },
+  {
+   "id": 5,
+   "nome": "Humor + parabéns + comente",
+   "texto": "Coloque faixas, uma placa de pare e um quebra-molas que ninguém pintou. Agora é só ligar o carro e passar por cima. Parabéns, você asfaltou uma rua. Se você já sabia, comente engenheiro. Se não sabia, comente motorista. E segue o Mundo em Camadas.",
+   "termos": [],
+   "cenas": "faixas pintadas, placa PARE, quebra-molas sem pintura e carro pulando; mascote de óculos, confete, vista aérea, cartão comente"
+  }
+ ],
+ "velocidade_audio": 1.17
+}

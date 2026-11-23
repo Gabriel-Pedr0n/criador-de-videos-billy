@@ -1,0 +1,55 @@
+{
+ "slug": "tomada",
+ "titulo": "Você instala uma tomada",
+ "voz": "Will – Deep Smooth and Affectionate (ElevenLabs v4)",
+ "limite_s": 125,
+ "velocidade": 1.15,
+ "blocos": [
+  {
+   "id": 1,
+   "nome": "Gancho + padrão de entrada",
+   "texto": "Se você ligar o fio da rua direto na tomada, você não vai ter energia. Vai ter um curto que pega fogo dentro da parede. Porque fio fino esquenta quando passa corrente demais. Mas a rede da rua manda energia sem limite e sem ninguém medir. Então você coloca no muro uma caixa com um relógio que mede o gasto e uma chave que desliga a casa inteira. Esse é o padrão de entrada.",
+   "termos": [
+    "padrão de entrada"
+   ],
+   "cenas": "mascote enfia o fio da rua na tomada -> faísca e fogo na parede em raio-X -> rebobina; poste, ramal chegando, caixa do padrão no muro com medidor e disjuntor geral"
+  },
+  {
+   "id": 2,
+   "nome": "Circuitos + disjuntor",
+   "texto": "Mas se a casa toda puxar energia por um fio só, chuveiro e forno somam corrente, e o fio esquenta. Então você divide a casa em caminhos separados, cada um com seu fio. Esses são os circuitos. Mas um circuito ainda pode passar do limite. Então você coloca em cada um uma chavinha que desliga sozinha. Esse é o disjuntor. É por isso que trocar por um disjuntor maior é perigoso: ele protege o fio.",
+   "termos": [
+    "circuitos",
+    "disjuntor"
+   ],
+   "cenas": "um fio só ficando vermelho; quadro de distribuição com fios coloridos indo a cada cômodo; disjuntor desarmando"
+  },
+  {
+   "id": 3,
+   "nome": "Eletroduto + fio terra",
+   "texto": "Mas fio solto na parede descasca e dá fuga no tijolo úmido. Então você passa os fios por um cano embutido até uma caixinha na parede. Esse é o eletroduto. Mas se um fio encosta na lataria da geladeira, ela inteira dá choque. Então você liga a carcaça numa haste de cobre enterrada, com um fio verde. Esse é o fio terra. É por isso que a tomada tem três furos: o do meio é o terra.",
+   "termos": [
+    "eletroduto",
+    "fio terra"
+   ],
+   "cenas": "parede em corte: mascote rasga a parede, embute o cano corrugado amarelo até a caixa 4x2; geladeira dá choque no mascote; haste de cobre no corte do terreno; fio verde; tomada de 3 furos em close"
+  },
+  {
+   "id": 4,
+   "nome": "DR",
+   "texto": "Mas um choque numa pessoa é pouca corrente, e o disjuntor nem percebe. Então você coloca no quadro um aparelho que compara a corrente que vai com a que volta. Se faltar um pouquinho, ele desliga na hora. Esse é o DR. É por isso que ele é obrigatório no banheiro e na cozinha.",
+   "termos": [
+    "DR"
+   ],
+   "cenas": "mascote encosta no fio, setas de corrente atravessando o corpo; quadro em close: setas indo e voltando, desequilíbrio, DR desarma"
+  },
+  {
+   "id": 5,
+   "nome": "Humor + fecho + comente",
+   "texto": "Coloque a caixinha, o espelho e um benjamim que era só por hoje. Agora é só ligar o carregador. Parabéns, você instalou uma tomada. Se você já sabia, comente eletricista. Se não sabia, comente benjamim. E segue o Mundo em Camadas.",
+   "termos": [],
+   "cenas": "espelho na tomada, benjamim cheio de plugues; carregador no celular; câmera sobe para a casa pronta com confete"
+  }
+ ],
+ "velocidade_audio": 1.0
+}

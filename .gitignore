@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+saida/
+mec/projetos/*/previas/
+mec/projetos/*/quadros/
+mec/projetos/*/final/
+mec/projetos/*/audio/*.wav
+mec/projetos/*/audio/bruto_*.wav
+mec/projetos/*/estado.json

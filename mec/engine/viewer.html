@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000;overflow:hidden}</style>
+<script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/jsm/"}}</script>
+</head><body><script type="module">
+import { Engine } from './engine.js';
+try {
+  const slug = new URLSearchParams(location.search).get('p');
+  const v = '?v=' + Date.now();
+  const proj = await (await fetch(`../projetos/${slug}/projeto.json${v}`)).json();
+  const tempo = await (await fetch(`../projetos/${slug}/tempo.json${v}`)).json();
+  const E = new Engine(proj, tempo);
+  const cena = await import(`../projetos/${slug}/cena.js${v}`);
+  await cena.default(E, E.K);
+  window.E = E;
+  window.EVENTOS = JSON.stringify(E.listaEventos());
+  window.renderFrame = t => E.frame(t);
+  window.inspecionar = t => E.inspecionar(t);
+  window.auditarPoses = () => E.auditarPoses();
+  window.corrigirPoses = () => E.corrigirPoses();
+  window.inspecionarAcoes = (a, b) => E.inspecionarAcoes(a, b);
+  // câmera livre para depuração / thumbnails: dbg(t, [pos], [alvo], fov)
+  window.dbg = (t, p, a, fov = 45) => { const k = E.camKeys; E.camKeys = [{ t: 0, p: new E.THREE.Vector3(...p), a: new E.THREE.Vector3(...a), f: fov }]; const r = E.frame(t); E.camKeys = k; return r; };
+  window.READY = true;
+} catch (e) { window.ERRO = String(e && e.stack || e); console.error(window.ERRO); }
+</script></body></html>

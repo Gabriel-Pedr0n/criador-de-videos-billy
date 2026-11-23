@@ -1,0 +1,67 @@
+{
+ "slug": "arcondicionado",
+ "titulo": "Você constrói um ar-condicionado",
+ "formula": "construcao",
+ "canal": "Mundo em Camadas",
+ "voz": "Will – Deep Smooth and Affectionate (ElevenLabs v4)",
+ "limite_s": 125,
+ "velocidade": 1.15,
+ "blocos": [
+  {
+   "id": 1,
+   "nome": "Gancho + fluido refrigerante",
+   "texto": "Se você colocar um ventilador no quarto a quarenta graus, você não vai ter frio. Vai ter um vento de forno na sua cara. Porque ventilador só mexe o ar quente, não tira o calor. Mas para esfriar, alguma coisa precisa roubar o calor do ar, como o suor que seca e gela a pele. Então você passa por um cano no quarto um líquido que ferve mesmo gelado. Ele ferve e leva o calor junto. Esse é o fluido refrigerante.",
+   "termos": [
+    "fluido refrigerante"
+   ],
+   "cenas": "quadro 1: mascote liga o ventilador, termômetro 40°C subindo, ventinho laranja de calor na cara, suor -> rebobina; cano de cobre entra no quarto, bolhas do líquido fervendo, partículas laranja de calor saindo do ar e entrando no cano"
+  },
+  {
+   "id": 2,
+   "nome": "Compressor",
+   "texto": "Mas depois de ferver, o gás sai cheio de calor, e esse calor não pode ficar no quarto. Então você coloca um motor que espreme esse gás até ele ficar mais quente que a rua. Esse é o compressor. É por isso que a caixa lá fora faz barulho.",
+   "termos": [
+    "compressor"
+   ],
+   "cenas": "corte para fora: cilindro preto do compressor espremendo o gás (setas azuis de aperto, painel de pressão e temperatura subindo), caixa tremendo, ondas de som"
+  },
+  {
+   "id": 3,
+   "nome": "Condensadora",
+   "texto": "Mas o gás quente e apertado ainda não volta a ser líquido. Então você passa ele por uma serpentina lá fora, com um ventilador soprando, como quem assopra o café. Ele perde o calor e vira líquido de novo. Essa é a condensadora. É por isso que sai vento quente da caixa do vizinho.",
+   "termos": [
+    "condensadora"
+   ],
+   "cenas": "serpentina na caixa externa, hélice girando, ar quente laranja saindo, gás vira gotas de líquido no cano; mascote sente o bafo quente do vizinho"
+  },
+  {
+   "id": 4,
+   "nome": "Válvula de expansão + evaporadora",
+   "texto": "Mas esse líquido ainda está apertado demais para gelar. Então você faz ele passar por um furinho bem estreito. A pressão despenca e ele gela na hora, como o spray que gela a lata. Essa é a válvula de expansão. Mas o frio precisa chegar no ar do quarto. Então você passa o líquido gelado por canos finos cheios de aletas, e um ventilador sopra o ar por eles. Essa é a evaporadora.",
+   "termos": [
+    "válvula de expansão",
+    "evaporadora"
+   ],
+   "cenas": "close do furo: líquido passa, painel de pressão despencando, cano fica azul com gelo; dentro do quarto: caixa branca na parede em raio-X, canos com aletas, ventilador, partículas azuis de frio; termômetro descendo 40 -> 22"
+  },
+  {
+   "id": 5,
+   "nome": "Dreno",
+   "texto": "Mas o ar gelado não segura a umidade, e ela vira gotas que escorrem pela parede, como no copo de refrigerante gelado. Então você coloca uma bandeja e uma mangueira que levam essa água para fora. Esse é o dreno. É por isso que pinga água do ar-condicionado do prédio na sua cabeça.",
+   "termos": [
+    "dreno"
+   ],
+   "cenas": "gotas escorrendo na parede, mofo começando -> rebobina; bandeja + mangueira até fora; gota cai do prédio no capacete do mascote"
+  },
+  {
+   "id": 6,
+   "nome": "Inverter + humor + fecho + comente",
+   "texto": "Mas se o motor liga e desliga no máximo o tempo todo, a conta de luz dispara. Então você faz o motor girar devagar quando o quarto chega na temperatura. Esse é o inverter. Coloque o controle, duas pilhas e a briga entre dezoito e vinte e três graus. Agora é só apertar o botão. Parabéns, você construiu um ar-condicionado. Se você já sabia, comente frigorista. Se não sabia, comente ventilador.",
+   "termos": [
+    "inverter"
+   ],
+   "cenas": "conta de luz subindo (painel R$, barra vermelha) -> motor desacelera, barra verde, termômetro estável em 22; controle remoto, balões 18 x 23; aperta o botão; casa pronta com confete; cartão comente"
+  }
+ ],
+ "velocidade_audio": 1.15
+}

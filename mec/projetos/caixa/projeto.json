@@ -1,0 +1,54 @@
+{
+ "slug": "caixa",
+ "titulo": "E se você montasse um caixa eletrônico?",
+ "formula": "construcao",
+ "canal": "Mundo em Camadas",
+ "voz": "Will – Deep Smooth and Affectionate (ElevenLabs v4)",
+ "limite_s": 125,
+ "velocidade": 1.0,
+ "blocos": [
+  {
+   "id": 1,
+   "nome": "Cofre",
+   "texto": "Se você deixar o dinheiro do caixa eletrônico numa gaveta atrás da tela, você não vai ter um caixa eletrônico. Vai ter um presente para o primeiro pé de cabra. Porque a máquina fica na rua, dia e noite, sem ninguém olhando. Então você coloca o dinheiro numa caixa de aço grosso, chumbada no chão. Por fora, só a tela, o teclado e a boca das notas. Esse é o cofre.",
+   "termos": [
+    "cofre"
+   ],
+   "cenas": "Mascote guarda o dinheiro numa gaveta; ladrão de desenho com pé de cabra leva tudo; ◀◀; cofre de aço desce e é chumbado no chão; tela, teclado e boca por fora."
+  },
+  {
+   "id": 2,
+   "nome": "Cassetes",
+   "texto": "Mas se as notas ficarem soltas lá dentro, a máquina não sabe quanto entregar. Então você separa em gavetas fechadas, uma para cada nota: cinquenta, cem e duzentos. Uma ventosa puxa uma nota de cada vez e solta numa esteira. Essas são as cassetes. É por isso que o caixa às vezes avisa que não tem nota de cinquenta: aquela gaveta acabou.",
+   "termos": [
+    "cassetes"
+   ],
+   "cenas": "Raio-X do cofre; 3 cassetes coloridas por valor; ventosa puxando nota a nota para a esteira; cassete de 50 esvaziando e aviso na tela."
+  },
+  {
+   "id": 3,
+   "nome": "Rejeito",
+   "texto": "Mas e se duas notas vierem grudadas? Você saca cem e leva duzentos. Então você passa cada nota entre dois roletes que medem a grossura. Grossa demais, a máquina não entrega: desvia para uma caixa trancada que só o banco abre. Essa é a caixa de rejeito. É por isso que às vezes o caixa conta, para e conta de novo.",
+   "termos": [
+    "rejeito"
+   ],
+   "cenas": "Duas notas grudadas; roletes com medidor subindo (0,1 mm → 0,2 mm); desvio para a caixa de rejeito com cadeado."
+  },
+  {
+   "id": 4,
+   "nome": "Tinta",
+   "texto": "Mas e se alguém arrombar o cofre? Então você coloca um cartucho de tinta em cada cassete. Se a gaveta for aberta à força, a tinta estoura e mancha todas as notas. E nota manchada assim perde o valor: o banco recolhe e ninguém é reembolsado. Esse é o sistema de entintamento.",
+   "termos": [
+    "entintamento"
+   ],
+   "cenas": "Cartucho de tinta na cassete; abertura à força → tinta rosa explode e mancha as notas; nota com X; selo do BC."
+  },
+  {
+   "id": 5,
+   "nome": "Final",
+   "texto": "Mas ainda falta o lado de fora. Então você coloca a tela, a câmera e um teclado com um pontinho no cinco, para quem não enxerga. Coloque também um adesivo de aviso que ninguém lê. Agora é só passar o cartão. Parabéns, você montou um caixa eletrônico. Se você já sabia, comente CASSETE. Se não sabia, comente TINTA.",
+   "termos": [],
+   "cenas": "Tela, câmera e teclado com relevo no 5; cartão; notas saindo; confete; CTA."
+  }
+ ]
+}

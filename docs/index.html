@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Billy Constrói · Gerador de vídeos</title>
+<style>
+  :root { --navy:#161f3d; --navy2:#22305E; --card:#1d2a52; --line:#34447d; --yellow:#F2B820; --orange:#F2761C; --blue:#2F6FD8; --text:#f4f6ff; --mute:#a9b4da; --ok:#3cc45a; --bad:#e5483a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--navy); color:var(--text); font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:18px 14px 60px; }
+  header { display:flex; align-items:center; gap:12px; margin:6px 0 18px; }
+  .logo { width:46px; height:46px; border-radius:14px; background:var(--yellow); display:grid; place-items:center; font-size:26px; box-shadow:0 0 0 4px var(--orange) inset; }
+  h1 { font-size:21px; margin:0; } header p { margin:0; color:var(--mute); font-size:14px; }
+  section { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; margin-bottom:14px; }
+  h2 { font-size:15px; letter-spacing:.04em; text-transform:uppercase; color:var(--yellow); margin:0 0 12px; display:flex; justify-content:space-between; align-items:center; }
+  label { display:block; font-size:13px; color:var(--mute); margin:12px 0 5px; }
+  input[type=text], input[type=password], textarea, select { width:100%; padding:11px 12px; border-radius:11px; border:1px solid var(--line); background:#121a36; color:var(--text); font:inherit; }
+  textarea { min-height:78px; resize:vertical; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; } @media (max-width:520px){ .row { grid-template-columns:1fr; } }
+  .check { display:flex; gap:10px; align-items:flex-start; margin-top:14px; color:var(--text); font-size:14px; }
+  .check input { width:20px; height:20px; margin-top:2px; accent-color:var(--yellow); }
+  button { font:inherit; cursor:pointer; border:0; border-radius:12px; padding:13px 16px; }
+  .go { width:100%; margin-top:16px; background:var(--yellow); color:#241a00; font-weight:800; font-size:18px; box-shadow:0 5px 0 #b58610; }
+  .go:active { transform:translateY(3px); box-shadow:0 2px 0 #b58610; } .go:disabled { opacity:.55; }
+  .mini { background:#2b3b72; color:var(--text); padding:7px 11px; font-size:13px; }
+  .hint { color:var(--mute); font-size:13px; margin:6px 0 0; }
+  details { margin-top:12px; color:var(--mute); font-size:14px; } summary { cursor:pointer; color:var(--text); }
+  details ol { padding-left:20px; margin:8px 0; } code { background:#121a36; padding:1px 6px; border-radius:6px; font-size:13px; }
+  .item { border-top:1px solid var(--line); padding:11px 0; display:flex; gap:10px; align-items:flex-start; justify-content:space-between; }
+  .item:first-of-type { border-top:0; } .item .t { font-weight:600; word-break:break-word; } .item .s { color:var(--mute); font-size:13px; }
+  .chip { flex:none; font-size:12px; font-weight:700; padding:4px 9px; border-radius:99px; background:#2b3b72; }
+  .chip.run { background:var(--blue); } .chip.ok { background:var(--ok); color:#06240f; } .chip.bad { background:var(--bad); } .chip.wait { background:#6a5a1a; }
+  a { color:#9cc0ff; } .links { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; } .links a { background:#2b3b72; border-radius:9px; padding:5px 10px; text-decoration:none; font-size:13px; color:var(--text); }
+  #toast { position:fixed; left:12px; right:12px; bottom:14px; max-width:720px; margin:0 auto; padding:13px 15px; border-radius:13px; background:#0d132b; border:1px solid var(--line); display:none; z-index:9; }
+  #toast.bad { border-color:var(--bad); } #toast.ok { border-color:var(--ok); }
+  .vazio { color:var(--mute); font-size:14px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="logo">🏗️</div>
+    <div><h1>Billy Constrói · Gerador</h1><p>Dispara o workflow no GitHub: o Claude escreve, a ElevenLabs narra, o motor 3D renderiza.</p></div>
+  </header>
+
+  <section id="conexao">
+    <h2>Conexão <button class="mini" id="btnSalvar">Salvar</button></h2>
+    <label for="repo">Repositório (dono/nome)</label>
+    <input type="text" id="repo" placeholder="seu-usuario/billy-constroi-gerador" autocomplete="off">
+    <label for="token">Token do GitHub (fica só neste navegador)</label>
+    <input type="password" id="token" placeholder="github_pat_..." autocomplete="off">
+    <details>
+      <summary>Como criar o token (1 minuto)</summary>
+      <ol>
+        <li>GitHub → foto → <b>Settings</b> → <b>Developer settings</b> → <b>Personal access tokens</b> → <b>Fine-grained tokens</b> → <b>Generate new token</b>.</li>
+        <li><b>Repository access</b>: <i>Only select repositories</i> → escolha só este repositório.</li>
+        <li><b>Permissions</b>: <code>Actions</code> = <i>Read and write</i> e <code>Contents</code> = <i>Read-only</i>.</li>
+        <li>Copie o token e cole acima. Ele só dispara e lê este workflow; as chaves do Claude e da ElevenLabs ficam nos <i>Secrets</i> do repositório, nunca nesta página.</li>
+      </ol>
+    </details>
+  </section>
+
+  <section>
+    <h2>Novo vídeo</h2>
+    <label for="tema">Tema <span style="opacity:.7">(deixe vazio para o Claude escolher sozinho)</span></label>
+    <textarea id="tema" placeholder="Ex.: E se você construísse um abrigo contra enchente?"></textarea>
+    <div class="row">
+      <div><label for="emocao">Emoção do tema (se automático)</label>
+        <select id="emocao"><option>qualquer</option><option>medo/sobrevivência</option><option>nojo</option><option>dinheiro/conforto</option><option>assunto da semana</option></select></div>
+      <div><label for="modo">O que gerar</label>
+        <select id="modo"><option value="completo">Vídeo completo</option><option value="so_roteiro">Só tema + roteiro (barato)</option><option value="teste_infra">Teste do sistema (sem API, grátis)</option></select></div>
+      <div><label for="blocos">Blocos</label><select id="blocos"><option>4</option><option selected>5</option><option>6</option></select></div>
+      <div><label for="duracao">Duração máxima</label><select id="duracao"><option value="100" selected>1:40</option><option value="125">2:05</option></select></div>
+      <div><label for="modelo">Modelo do Claude</label><select id="modelo"><option value="sonnet" selected>Sonnet (econômico)</option><option value="opus">Opus (mais forte, mais caro)</option></select></div>
+    </div>
+    <label for="instrucoes">Instruções extras (opcional)</label>
+    <textarea id="instrucoes" placeholder="Ex.: o Billy usa uma pá azul; o cenário é uma rua de bairro"></textarea>
+    <label class="check"><input type="checkbox" id="rascunho"><span>Rascunho: seguir mesmo se o roteiro ou a cena não passarem nas conferências automáticas</span></label>
+    <button class="go" id="btnGerar">Gerar vídeo</button>
+    <p class="hint" id="dica">Um vídeo completo leva de 30 min a 2 h no GitHub. Você pode fechar a página.</p>
+  </section>
+
+  <section>
+    <h2>Execuções <button class="mini" id="btnAtualizar">Atualizar</button></h2>
+    <div id="runs"><p class="vazio">Conecte o repositório e o token para ver as execuções.</p></div>
+  </section>
+
+  <section>
+    <h2>Vídeos prontos</h2>
+    <div id="videos"><p class="vazio">Aqui aparecem os vídeos finalizados, com mp4, legenda, thumbnail e textos de publicação.</p></div>
+  </section>
+</main>
+<div id="toast"></div>
+
+<script>
+const WORKFLOW = 'gerar-video.yml';
+const $ = id => document.getElementById(id);
+const guardar = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+const ler = k => { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } };
+let timer = null;
+
+function aviso(txt, tipo) {
+  const t = $('toast'); t.textContent = txt; t.className = tipo || ''; t.style.display = 'block';
+  clearTimeout(aviso.id); aviso.id = setTimeout(() => { t.style.display = 'none'; }, 7000);
+}
+
+// repositório: guardado, ou deduzido do endereço usuario.github.io/repositorio
+function repoInicial() {
+  const salvo = ler('repo'); if (salvo) return salvo;
+  if (location.hostname.endsWith('.github.io')) {
+    const dono = location.hostname.split('.')[0], nome = location.pathname.split('/')[1];
+    if (dono && nome) return dono + '/' + nome;
+  }
+  return '';
+}
+$('repo').value = repoInicial(); $('token').value = ler('token');
+
+function cfg() {
+  const repo = $('repo').value.trim().replace(/^https?:\/\/github\.com\//, '').replace(/\.git$/, '').replace(/\/$/, '');
+  return { repo, token: $('token').value.trim() };
+}
+
+async function api(caminho, opcoes = {}) {
+  const { repo, token } = cfg();
+  if (!/^[\w.-]+\/[\w.-]+$/.test(repo)) throw new Error('Repositório inválido. Use o formato dono/nome.');
+  if (!token) throw new Error('Cole o token do GitHub na seção Conexão.');
+  const r = await fetch('https://api.github.com/repos/' + repo + caminho, {
+    ...opcoes,
+    headers: { 'Accept': 'application/vnd.github+json', 'Authorization': 'Bearer ' + token, 'X-GitHub-Api-Version': '2022-11-28', ...(opcoes.headers || {}) }
+  });
+  if (!r.ok) {
+    let msg = ''; try { msg = (await r.json()).message || ''; } catch (e) {}
+    const dica = { 401: 'Token inválido ou expirado.', 403: 'Sem permissão: o token precisa de Actions (leitura e escrita) e Contents (leitura) neste repositório.',
+                   404: 'Não achei o repositório ou o workflow "' + WORKFLOW + '" na branch padrão (confira o nome do repositório e as permissões do token).',
+                   422: 'O GitHub recusou os parâmetros: ' + msg }[r.status] || msg;
+    const e = new Error(dica || ('Erro ' + r.status)); e.status = r.status; throw e;
+  }
+  return r.status === 204 ? null : r.json();
+}
+
+function chip(run) {
+  if (run.status === 'queued' || run.status === 'waiting' || run.status === 'pending') return ['na fila', 'wait'];
+  if (run.status === 'in_progress') return ['rodando', 'run'];
+  if (run.conclusion === 'success') return ['pronto', 'ok'];
+  if (run.conclusion === 'cancelled') return ['cancelado', ''];
+  return ['falhou', 'bad'];
+}
+function quando(iso) {
+  const d = new Date(iso), min = Math.round((Date.now() - d) / 60000);
+  if (min < 1) return 'agora'; if (min < 60) return 'há ' + min + ' min';
+  if (min < 1440) return 'há ' + Math.round(min / 60) + ' h'; return d.toLocaleDateString('pt-BR');
+}
+function el(tag, props = {}, ...filhos) {
+  const e = document.createElement(tag); Object.assign(e, props);
+  filhos.flat().forEach(f => e.append(f)); return e;
+}
+
+async function carregarRuns() {
+  try {
+    const j = await api('/actions/workflows/' + WORKFLOW + '/runs?per_page=8');
+    const box = $('runs'); box.replaceChildren();
+    if (!j.workflow_runs.length) { box.append(el('p', { className: 'vazio', textContent: 'Nenhuma execução ainda.' })); return false; }
+    let ativo = false;
+    j.workflow_runs.forEach(run => {
+      const [txt, cls] = chip(run); if (run.status !== 'completed') ativo = true;
+      const info = el('div', {}, el('div', { className: 't', textContent: run.display_title || run.name }),
+        el('div', { className: 's', textContent: quando(run.created_at) + ' · ' }, el('a', { href: run.html_url, target: '_blank', rel: 'noopener', textContent: 'ver detalhes' })));
+      box.append(el('div', { className: 'item' }, info, el('span', { className: 'chip ' + cls, textContent: txt })));
+    });
+    return ativo;
+  } catch (e) { $('runs').replaceChildren(el('p', { className: 'vazio', textContent: e.message })); return false; }
+}
+
+async function carregarVideos() {
+  try {
+    const j = await api('/releases?per_page=10');
+    const box = $('videos'); box.replaceChildren();
+    const lista = j.filter(r => /^video-/.test(r.tag_name));
+    if (!lista.length) { box.append(el('p', { className: 'vazio', textContent: 'Nenhum vídeo pronto ainda.' })); return; }
+    lista.forEach(r => {
+      const nomes = { 'video.mp4': '🎬 Vídeo', 'video.srt': '💬 Legenda', 'thumbnail.png': '🖼️ Thumbnail', 'publicacao.md': '📝 Textos', 'relatorio.md': '📋 Relatório' };
+      const links = el('div', { className: 'links' });
+      (r.assets || []).forEach(a => links.append(el('a', { href: a.browser_download_url, target: '_blank', rel: 'noopener', textContent: nomes[a.name] || a.name })));
+      links.append(el('a', { href: r.html_url, target: '_blank', rel: 'noopener', textContent: 'abrir release' }));
+      box.append(el('div', { className: 'item' }, el('div', {}, el('div', { className: 't', textContent: r.name }), el('div', { className: 's', textContent: quando(r.published_at || r.created_at) }), links)));
+    });
+  } catch (e) { $('videos').replaceChildren(el('p', { className: 'vazio', textContent: e.message })); }
+}
+
+async function atualizar() {
+  const ativo = await carregarRuns(); await carregarVideos();
+  clearTimeout(timer); if (ativo && document.visibilityState === 'visible') timer = setTimeout(atualizar, 20000);
+}
+
+$('btnSalvar').onclick = () => { const c = cfg(); guardar('repo', c.repo); guardar('token', c.token); aviso('Salvo neste navegador.', 'ok'); atualizar(); };
+$('btnAtualizar').onclick = atualizar;
+
+$('modo').onchange = () => {
+  const m = $('modo').value;
+  $('dica').textContent = m === 'teste_infra' ? 'Ensaio do motor 3D no GitHub com o projeto de exemplo. Não usa Claude nem ElevenLabs: não gasta créditos.'
+    : m === 'so_roteiro' ? 'Só o Claude: tema, pesquisa e roteiro avaliado pela fórmula. Barato e rápido (alguns minutos).'
+    : 'Um vídeo completo leva de 30 min a 2 h no GitHub. Você pode fechar a página.';
+};
+
+$('btnGerar').onclick = async () => {
+  const b = $('btnGerar'); b.disabled = true;
+  try {
+    const c = cfg(); guardar('repo', c.repo); guardar('token', c.token);
+    const repoInfo = await api('');                                   // descobre a branch padrão
+    const inputs = { tema: $('tema').value.trim(), emocao: $('emocao').value, modo: $('modo').value, blocos: $('blocos').value,
+                     duracao_max: $('duracao').value, modelo: $('modelo').value, instrucoes: $('instrucoes').value.trim(), rascunho: $('rascunho').checked ? 'true' : 'false' };
+    await api('/actions/workflows/' + WORKFLOW + '/dispatches', { method: 'POST', body: JSON.stringify({ ref: repoInfo.default_branch, inputs }) });
+    aviso('Disparado! Em cerca de 1 minuto ele aparece em "Execuções".', 'ok');
+    setTimeout(atualizar, 6000); setTimeout(atualizar, 15000);
+  } catch (e) { aviso(e.message, 'bad'); }
+  finally { b.disabled = false; }
+};
+
+if (cfg().repo && cfg().token) atualizar();
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && cfg().token) atualizar(); });
+</script>
+</body>
+</html>

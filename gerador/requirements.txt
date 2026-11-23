@@ -1,0 +1,7 @@
+anthropic>=0.40
+requests>=2.31
+numpy
+Pillow
+playwright
+pycairo
+pygltflib
